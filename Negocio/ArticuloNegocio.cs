@@ -48,5 +48,29 @@ namespace Negocio
         }
 
 
+        // EN PROCESO HAY QUE HACER CLASE IMAGEN Y CATEGORIA
+
+        //public void agregar(Articulo nuevo)
+        //{
+        //    AccesoDatos datos = new AccesoDatos();
+
+        //    try
+        //    {
+                  // no estoy 100% de que el insert sea asi 😢
+        //        datos.setConsulta("Insert into ARTICULOS (Codigo,Nombre,Descripcion,Precio,IdMarca,IdCategoria) values (@codigo,@nombre,@descripcion,@precio,@idmarca,@idcategoria)");
+        //        datos.setParametro("@codigo", nuevo.Codigo.id);  con id?
+        //        datos.ejecutarLectura();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //    finally
+        //    {
+        //        datos.cerrarConexion();  // para qe se cierre igual
+        //    }
+        //}
+
+
     }
 }

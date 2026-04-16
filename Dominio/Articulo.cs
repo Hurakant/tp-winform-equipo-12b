@@ -15,8 +15,8 @@ namespace Dominio
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Marca { get; set; }
-        public int Categoria { get; set; }
-        public string Imagen { get; set; }
+        public int Categoria { get; set; } // el tipo e dato va como CATEGORIA EN VEZ DE int
+        public string Imagen { get; set; } // el tipo e dato va como  IMAGEN EN VEZ DE STRING
         public decimal Precio { get; set; }
     }
 }
