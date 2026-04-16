@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dominio;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,8 @@ namespace tpWinformgrupo12b
 {
     public partial class Form1 : Form
     {
+        private List<Articulo> articuloList;
+
         public Form1()
         {
             InitializeComponent();
@@ -19,7 +23,10 @@ namespace tpWinformgrupo12b
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //Carga del datasource en el grid
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            articuloList = negocio.listar();
+            dgvBasedeDatos.DataSource = articuloList;
         }
     }
 }

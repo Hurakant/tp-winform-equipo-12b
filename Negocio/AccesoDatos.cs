@@ -14,17 +14,18 @@ namespace Negocio
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
-
+        //Arreglen esto porfa
         public SqlDataReader Lector
         {
             get { return lector; }
         }
-
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrate security=true ");
+            //Conexion a la base de datos, aqui use la mia pero cambienla cuando la vayan a usar, no se como arreglarlo :c
+            conexion = new SqlConnection("Server=localhost,1433; Database=CATALOGO_P3_DB; integrated security=false; User Id=sa; Password=Antonio12345@; TrustServerCertificate=True;");
             comando = new SqlCommand();
         }
+        //Esto es para colocar la consulta
         public void setConsulta(string consulta) 
         {
             comando.CommandType = System.Data.CommandType.Text; comando.CommandText = consulta;
@@ -43,6 +44,7 @@ namespace Negocio
                 throw ex;
             }
         }
+        //Cerrar conexion
         public void cerrarConexion()
         {
             if (lector != null)

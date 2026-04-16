@@ -12,12 +12,16 @@ namespace Negocio
     {
         public List<Articulo> listar()
         {
+            //Cosas que se usan
             List<Articulo> Lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
+            //Try para evitar excepciones
             try
             {
-                datos.setConsulta("Server=localhost,1433; Database=CATALOGO_P3_DB; integrated security=false; User Id=sa; Password=Antonio12345@; TrustServerCertificate=True");
+                //Conexion con la base de datos usando acceso datos
+                datos.setConsulta("select P.Id, P.Codigo, P.Nombre, P.Descripcion, P.IdCategoria, P.Precio, E.Descripcion Marca, J.ImagenUrl FROM dbo.ARTICULOS P INNER JOIN dbo.MARCAS E ON P.IdMarca = E.Id INNER JOIN dbo.IMAGENES J ON P.Id = J.IdArticulo");
                 datos.ejecutarLectura();
+                //While para cargar los datos a la lista de articulo
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
@@ -26,7 +30,7 @@ namespace Negocio
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Marca = (string)datos.Lector["Marca"];
-                    aux.Categoria = (string)datos.Lector["IdCategoria"];
+                    aux.Categoria = (int)datos.Lector["IdCategoria"];
                     aux.Imagen = (string)datos.Lector["ImagenUrl"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
@@ -39,6 +43,7 @@ namespace Negocio
             {
                 throw ex;
             }
+            //Finally para asegurarnos de cerrar la conexion
             finally { datos.cerrarConexion(); }
         }
 
