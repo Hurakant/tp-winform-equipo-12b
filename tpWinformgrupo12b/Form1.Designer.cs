@@ -34,22 +34,28 @@
             // 
             // dgvBasedeDatos
             // 
+            this.dgvBasedeDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBasedeDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBasedeDatos.Location = new System.Drawing.Point(12, 12);
+            this.dgvBasedeDatos.Location = new System.Drawing.Point(11, 11);
+            this.dgvBasedeDatos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBasedeDatos.Name = "dgvBasedeDatos";
             this.dgvBasedeDatos.RowHeadersWidth = 51;
             this.dgvBasedeDatos.RowTemplate.Height = 24;
-            this.dgvBasedeDatos.Size = new System.Drawing.Size(553, 304);
+            this.dgvBasedeDatos.Size = new System.Drawing.Size(578, 344);
             this.dgvBasedeDatos.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.dgvBasedeDatos);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBasedeDatos)).EndInit();
             this.ResumeLayout(false);
 
