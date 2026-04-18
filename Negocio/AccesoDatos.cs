@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Negocio
 {
     public class AccesoDatos
@@ -22,6 +23,7 @@ namespace Negocio
         public AccesoDatos()
         {
             //Conexion a la base de datos, aqui use la mia pero cambienla cuando la vayan a usar, no se como arreglarlo :c
+            //server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true
             conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
             comando = new SqlCommand();
         }
@@ -51,6 +53,21 @@ namespace Negocio
                 throw ex;
             }
         }
+
+        public void ejecutarAccion()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         //Cerrar conexion
         public void cerrarConexion()
         {

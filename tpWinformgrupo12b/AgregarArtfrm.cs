@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -27,36 +28,67 @@ namespace tpWinformgrupo12b
             Close();
         }
 
-
-        //  EL BOTON ACEPTAR NO AGREGA NADA, FALTA METODO DE AGREGAR Y MODIFICAR
-        // tmb faltan las demas opciones como lo del url de imagen y que ande el aceptar y no se si poner la picturebox
+        //falta metodo modificar
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio artnegocio = new ArticuloNegocio();
+            
             try
             {
                 if (articulo == null)
                 {
                     articulo = new Articulo();
                 }
-
+                
                 articulo.Codigo = txtCodigo.Text;
+                articulo.Nombre = txtNombre.Text;
+                articulo.Descripcion = txtDescripcion.Text;
+                articulo.Precio = decimal.Parse(txtPrecio.Text);
+                articulo.Imagen = txturlImagen.Text;
+                articulo.Marca = (Marca)cbxMarca.SelectedItem;
+                articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
 
                 if (articulo.Id != 0)
                 {
-                    //articulo.modificar(articulo);
+                    //artnegocio.modificar(articulo);
                     MessageBox.Show("Modificado exitosamente");
                 }
                 else
                 {
-                    //Negocio.agregar(articulo);
+                    artnegocio.agregar(articulo);
                     MessageBox.Show("Agregado exitosamente");
                 }
+
+                Close();
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message);
+                
             }
+                
+        }
+        private void txturlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txturlImagen.Text); //el url para mostar la imagen en el agregar
+        }
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxAgregarArticulo.Load(imagen);
+                
+            }
+            catch (Exception ex)
+            {
+                pbxAgregarArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+            }
+        }
+
+        private void AgregarArtfrm_Load(object sender, EventArgs e)
+        {
+           
+            
         }
     }
 }

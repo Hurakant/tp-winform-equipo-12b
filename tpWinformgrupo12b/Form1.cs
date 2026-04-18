@@ -33,7 +33,7 @@ namespace tpWinformgrupo12b
 
         private void ocultarColumnas()
         {
-            dgvBasedeDatos.Columns["imagen"].Visible = false;  // es como imagen? o Imagen 
+            dgvBasedeDatos.Columns["imagen"].Visible = false;  
             dgvBasedeDatos.Columns["Id"].Visible = false;
         }
 
@@ -70,7 +70,6 @@ namespace tpWinformgrupo12b
         private void dgvBasedeDatos_SelectionChanged(object sender, EventArgs e)
         {
            
-        
             if (dgvBasedeDatos.CurrentRow != null)
             {
                 Articulo selectActual = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
