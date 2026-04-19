@@ -21,6 +21,13 @@ namespace tpWinformgrupo12b
         public AgregarArtfrm()
         {
             InitializeComponent();
+            Text = "Agregar Artículo"; //Cuando es vacio agrega entonces le puse este nombre po si acaso
+        }
+        public AgregarArtfrm(Articulo seleccionado)
+        {
+            InitializeComponent();
+            this.articulo = seleccionado;
+            Text = "Modificar Artículo"; //Este es cuando se modifica un articulo
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -95,8 +102,6 @@ namespace tpWinformgrupo12b
 
         private void AgregarArtfrm_Load(object sender, EventArgs e)
         {
-           
-            
         }
     }
 }

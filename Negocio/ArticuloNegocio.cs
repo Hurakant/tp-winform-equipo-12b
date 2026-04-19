@@ -129,5 +129,50 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificar(Articulo art)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, Precio = @precio, IdMarca = @idmarca, IdCategoria = @idcategoria WHERE Id = @id");
+
+                datos.setParametro("@codigo", art.Codigo);
+                datos.setParametro("@nombre", art.Nombre);
+                datos.setParametro("@descripcion", art.Descripcion);
+                datos.setParametro("@precio", art.Precio);
+                datos.setParametro("@idmarca", art.Marca.Id);
+                datos.setParametro("@idcategoria", art.Categoria.Id);
+                datos.setParametro("@id", art.Id);
+
+                datos.ejecutarAccion();
+
+                datos.cerrarConexion();
+                datos = new AccesoDatos();
+
+                datos.setConsulta("DELETE FROM IMAGENES WHERE IdArticulo = @idArt");
+                datos.setParametro("@idArt", art.Id);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
+
+                //si el artículo tiene al menos una imagen en la lista, la insertamos
+                if (art.Imagenes.Count > 0 && !string.IsNullOrEmpty(art.Imagenes[0]))
+                {
+                    datos = new AccesoDatos();
+                    datos.setConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArt, @url)");
+                    datos.setParametro("@idArt", art.Id);
+                    datos.setParametro("@url", art.Imagenes[0]);
+
+                    datos.ejecutarAccion();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

@@ -136,5 +136,20 @@ private void btnAnterior_Click(object sender, EventArgs e)
         cargarImagen(seleccionado.Imagenes[imgIndex]);
     }
 }
+
+        private void TsbAgregar_Click(object sender, EventArgs e)
+        {
+            AgregarArtfrm agregarArt = new AgregarArtfrm();
+            agregarArt.ShowDialog();
+            cargar();
+        }
+
+        private void TsbModificar_Click(object sender, EventArgs e)
+        {
+            Articulo seleccionado = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
+            AgregarArtfrm modificar = new AgregarArtfrm(seleccionado);
+            modificar.ShowDialog();
+            cargar();
+        }
     }
 }
