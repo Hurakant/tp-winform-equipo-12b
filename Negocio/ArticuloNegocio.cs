@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -17,8 +18,9 @@ namespace Negocio
 
             try 
             {
-                datos.setConsulta("select P.Id, P.Codigo, P.Nombre, P.Descripcion, P.Precio, P.IdCategoria, C.Descripcion as Categoria, E.Descripcion as Marca, J.ImagenUrl FROM dbo.ARTICULOS P LEFT JOIN dbo.MARCAS E ON P.IdMarca = E.Id LEFT JOIN dbo.CATEGORIAS C ON P.IdCategoria = C.Id LEFT JOIN dbo.IMAGENES J ON P.Id = J.IdArticulo"); datos.ejecutarLectura();
-            
+                datos.setConsulta("SELECT P.Id, P.Codigo, P.Nombre, P.Descripcion, P.Precio, P.IdCategoria, C.Descripcion as Categoria, E.Descripcion as Marca FROM dbo.ARTICULOS P LEFT JOIN dbo.MARCAS E ON P.IdMarca = E.Id LEFT JOIN dbo.CATEGORIAS C ON P.IdCategoria = C.Id");
+                datos.ejecutarLectura();
+
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
@@ -28,29 +30,11 @@ namespace Negocio
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.Marca = new Marca { Descripcion = datos.Lector["Marca"] is DBNull ? "Sin Marca" : (string)datos.Lector["Marca"] };
+                    aux.Categoria = new Categoria { Descripcion = datos.Lector["Categoria"] is DBNull ? "Sin Categoría" : (string)datos.Lector["Categoria"] };
 
-                    aux.Marca = new Marca();
-                    aux.Categoria = new Categoria();
-
-                     // carga marca si existe
-                    if (!(datos.Lector["Marca"] is DBNull))
-                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
-
-                    // carga categoria si existe
-                    if (!(datos.Lector["Categoria"] is DBNull))
-                    {
-                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
-                    }
-                    else
-                    {
-                        aux.Categoria.Descripcion = "sin categoria";   // para que no salte q no hay categoria 
-                    }
-
-                    // cargar el url si existe    
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                    {
-                        aux.Imagen = (string)datos.Lector["ImagenUrl"];
-                    }
+                    //Aquí se cargan las imagenes ahora, llama a una funcion que hace cosas, es por si tiene mas de una
+                    aux.Imagenes = listarImagenesPorArticulo(aux.Id);
 
                     Lista.Add(aux);
                 }
@@ -80,7 +64,7 @@ namespace Negocio
                 datos.setParametro("@descripcion", nuevo.Descripcion);
                 datos.setParametro("@precio", nuevo.Precio);
 
-                // datos predeterminados hasta que se haga una clase de marcanegorio y categorianegocio
+                // datos predeterminados hasta que se haga una clase de marcanegocio y categorianegocio
                 // queda como samsung y celular
                 datos.setParametro("@idmarca", 1);
                 datos.setParametro("@idcategoria", 1);
@@ -101,15 +85,40 @@ namespace Negocio
                     int idAsignado = (int)datos.Lector["Id"];
                     datos.cerrarConexion();
 
-                    // se guarda ka imagen
+                    // se guarda la imagen
                     // y con el id q buscamos ponemos su imagen
                     datos = new AccesoDatos();
                     datos.setConsulta("INSERT INTO IMAGENES (IdArticulo, ImagenUrl) VALUES (@idArt, @url)");
                     datos.setParametro("@idArt", idAsignado);
-                    datos.setParametro("@url", nuevo.Imagen);
+                    datos.setParametro("@url", nuevo.Imagenes.Count > 0 ? nuevo.Imagenes[0] : "");
 
                     datos.ejecutarAccion();
                 }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public List<string> listarImagenesPorArticulo(int idArticulo)
+        {
+            List<string> lista = new List<string>();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("SELECT ImagenUrl FROM IMAGENES WHERE IdArticulo = @id");
+                datos.setParametro("@id", idArticulo);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    lista.Add((string)datos.Lector["ImagenUrl"]);
+                }
+                return lista;
             }
             catch (Exception ex)
             {

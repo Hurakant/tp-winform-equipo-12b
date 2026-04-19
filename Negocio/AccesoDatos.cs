@@ -23,8 +23,8 @@ namespace Negocio
         public AccesoDatos()
         {
             //Conexion a la base de datos, aqui use la mia pero cambienla cuando la vayan a usar, no se como arreglarlo :c
-            //server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            //"server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true;"
+            conexion = new SqlConnection("server=localhost; database=CATALOGO_P3_DB; integrated security=false; User Id=sa; Password=Antonio12345@;");
             comando = new SqlCommand();
         }
         //Esto es para colocar la consulta

@@ -32,25 +32,35 @@ namespace tpWinformgrupo12b
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio artnegocio = new ArticuloNegocio();
-            
+
             try
             {
+                //si es un alta nueva, instanciamos
                 if (articulo == null)
                 {
                     articulo = new Articulo();
                 }
-                
+
+                //Textos
                 articulo.Codigo = txtCodigo.Text;
                 articulo.Nombre = txtNombre.Text;
                 articulo.Descripcion = txtDescripcion.Text;
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
-                articulo.Imagen = txturlImagen.Text;
+
+                //Imagenes
+                articulo.Imagenes.Clear();
+                if (!string.IsNullOrWhiteSpace(txturlImagen.Text))
+                {
+                    articulo.Imagenes.Add(txturlImagen.Text);
+                }
+
+                //comboBox para estas 2 cosas feas
                 articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
 
+                //if para modificar o agregar
                 if (articulo.Id != 0)
-                {
-                    //artnegocio.modificar(articulo);
+                {   
                     MessageBox.Show("Modificado exitosamente");
                 }
                 else
@@ -63,10 +73,8 @@ namespace tpWinformgrupo12b
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                
+                MessageBox.Show("Error: " + ex.Message);
             }
-                
         }
         private void txturlImagen_Leave(object sender, EventArgs e)
         {
