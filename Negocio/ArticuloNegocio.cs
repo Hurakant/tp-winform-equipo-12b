@@ -67,7 +67,7 @@ namespace Negocio
                 // datos predeterminados hasta que se haga una clase de marcanegocio y categorianegocio
                 // queda como samsung y celular
                 datos.setParametro("@idmarca", 1);
-                datos.setParametro("@idcategoria", 1);
+                datos.setParametro("@idcategoria", nuevo.Categoria.Id);
 
                 datos.ejecutarAccion();
 

@@ -102,6 +102,11 @@ namespace tpWinformgrupo12b
 
         private void AgregarArtfrm_Load(object sender, EventArgs e)
         {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            cbxCategoria.DataSource = negocio.listar();
+            cbxCategoria.ValueMember = "Id";
+            cbxCategoria.DisplayMember = "Descripcion";
+
         }
     }
 }
