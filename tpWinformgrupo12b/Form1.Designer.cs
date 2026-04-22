@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pbxImagen));
             this.dgvBasedeDatos = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnSiguiente = new System.Windows.Forms.Button();
             this.btnAnterior = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsMain = new System.Windows.Forms.ToolStrip();
             this.TsbAgregar = new System.Windows.Forms.ToolStripButton();
             this.TsbModificar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.TsbEliminarArticulo = new System.Windows.Forms.ToolStripButton();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbRecargar = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBasedeDatos)).BeginInit();
-            this.toolStrip1.SuspendLayout();
+            this.tsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,20 +95,24 @@
             this.btnAnterior.UseVisualStyleBackColor = true;
             this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
-            // toolStrip1
+            // tsMain
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsbAgregar,
-            this.TsbModificar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(988, 25);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip1";
+            this.TsbModificar,
+            this.toolStripSeparator1,
+            this.TsbEliminarArticulo,
+            this.toolStripSeparator2,
+            this.tsbRecargar});
+            this.tsMain.Location = new System.Drawing.Point(0, 0);
+            this.tsMain.Name = "tsMain";
+            this.tsMain.Size = new System.Drawing.Size(988, 25);
+            this.tsMain.TabIndex = 5;
+            this.tsMain.Text = "toolStrip1";
             // 
             // TsbAgregar
             // 
-            this.TsbAgregar.Image = global::tpWinformgrupo12b.Properties.Resources.AñadirArticulo;
+            this.TsbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("TsbAgregar.Image")));
             this.TsbAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbAgregar.Name = "TsbAgregar";
             this.TsbAgregar.Size = new System.Drawing.Size(69, 22);
@@ -113,7 +122,7 @@
             // 
             // TsbModificar
             // 
-            this.TsbModificar.Image = global::tpWinformgrupo12b.Properties.Resources.ModificarArticulo1;
+            this.TsbModificar.Image = ((System.Drawing.Image)(resources.GetObject("TsbModificar.Image")));
             this.TsbModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbModificar.Name = "TsbModificar";
             this.TsbModificar.Size = new System.Drawing.Size(78, 22);
@@ -121,6 +130,22 @@
             this.TsbModificar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.TsbModificar.ToolTipText = "Modificar un articulo";
             this.TsbModificar.Click += new System.EventHandler(this.TsbModificar_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // TsbEliminarArticulo
+            // 
+            this.TsbEliminarArticulo.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.TsbEliminarArticulo.Image = ((System.Drawing.Image)(resources.GetObject("TsbEliminarArticulo.Image")));
+            this.TsbEliminarArticulo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbEliminarArticulo.Name = "TsbEliminarArticulo";
+            this.TsbEliminarArticulo.Size = new System.Drawing.Size(70, 22);
+            this.TsbEliminarArticulo.Text = "Eliminar";
+            this.TsbEliminarArticulo.ToolTipText = "Eliminar articulo";
+            this.TsbEliminarArticulo.Click += new System.EventHandler(this.TsbEliminarArticulo_Click);
             // 
             // pbxArticulo
             // 
@@ -133,12 +158,27 @@
             this.pbxArticulo.TabIndex = 1;
             this.pbxArticulo.TabStop = false;
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbRecargar
+            // 
+            this.tsbRecargar.Image = ((System.Drawing.Image)(resources.GetObject("tsbRecargar.Image")));
+            this.tsbRecargar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRecargar.Name = "tsbRecargar";
+            this.tsbRecargar.Size = new System.Drawing.Size(73, 22);
+            this.tsbRecargar.Text = "Recargar";
+            this.tsbRecargar.ToolTipText = "Recargar la lista de articulos";
+            this.tsbRecargar.Click += new System.EventHandler(this.tsbRecargar_Click);
+            // 
             // pbxImagen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(988, 443);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.tsMain);
             this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.btnAgregar);
@@ -151,8 +191,8 @@
             this.Text = "Administrador de articulos";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBasedeDatos)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.tsMain.ResumeLayout(false);
+            this.tsMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -166,9 +206,13 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnSiguiente;
         private System.Windows.Forms.Button btnAnterior;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip tsMain;
         private System.Windows.Forms.ToolStripButton TsbAgregar;
         private System.Windows.Forms.ToolStripButton TsbModificar;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton TsbEliminarArticulo;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsbRecargar;
     }
 }
 

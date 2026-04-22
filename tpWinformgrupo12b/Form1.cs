@@ -151,5 +151,28 @@ private void btnAnterior_Click(object sender, EventArgs e)
             modificar.ShowDialog();
             cargar();
         }
+
+        private void TsbEliminarArticulo_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            Articulo seleccionado;
+            try
+            {
+                seleccionado = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
+                negocio.eliminar(seleccionado.Id);
+                cargar();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void tsbRecargar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Recargando lista...");
+            cargar();
+        }
     }
 }
