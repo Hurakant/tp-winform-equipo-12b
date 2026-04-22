@@ -18,7 +18,7 @@ namespace Negocio
 
             try 
             {
-                datos.setConsulta("SELECT P.Id, P.Codigo, P.Nombre, P.Descripcion, P.Precio, P.IdCategoria, C.Descripcion as Categoria, E.Descripcion as Marca FROM dbo.ARTICULOS P LEFT JOIN dbo.MARCAS E ON P.IdMarca = E.Id LEFT JOIN dbo.CATEGORIAS C ON P.IdCategoria = C.Id");
+                datos.setConsulta("SELECT P.Id,P.Codigo,P.Nombre,P.Descripcion,P.Precio,P.IdMarca,P.IdCategoria, C.Descripcion as Categoria,E.Descripcion as Marca FROM dbo.ARTICULOS P LEFT JOIN dbo.MARCAS E ON P.IdMarca = E.Id LEFT JOIN dbo.CATEGORIAS C ON P.IdCategoria = C.Id");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -30,8 +30,14 @@ namespace Negocio
                     aux.Nombre = (string)datos.Lector["Nombre"];
                     aux.Descripcion = (string)datos.Lector["Descripcion"];
                     aux.Precio = (decimal)datos.Lector["Precio"];
-                    aux.Marca = new Marca { Descripcion = datos.Lector["Marca"] is DBNull ? "Sin Marca" : (string)datos.Lector["Marca"] };
-                    aux.Categoria = new Categoria { Descripcion = datos.Lector["Categoria"] is DBNull ? "Sin Categoría" : (string)datos.Lector["Categoria"] };
+
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = datos.Lector["IdMarca"] is DBNull ? 0 : (int)datos.Lector["IdMarca"];
+                    aux.Marca.Descripcion = datos.Lector["Marca"] is DBNull ? "Sin Marca" : (string)datos.Lector["Marca"];
+
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = datos.Lector["IdCategoria"] is DBNull ? 0 : (int)datos.Lector["IdCategoria"];
+                    aux.Categoria.Descripcion = datos.Lector["Categoria"] is DBNull ? "Sin Categoría" : (string)datos.Lector["Categoria"];
 
                     //Aquí se cargan las imagenes ahora, llama a una funcion que hace cosas, es por si tiene mas de una
                     aux.Imagenes = listarImagenesPorArticulo(aux.Id);
@@ -64,9 +70,7 @@ namespace Negocio
                 datos.setParametro("@descripcion", nuevo.Descripcion);
                 datos.setParametro("@precio", nuevo.Precio);
 
-                // datos predeterminados hasta que se haga una clase de marcanegocio y categorianegocio
-                // queda como samsung y celular
-                datos.setParametro("@idmarca", 1);
+                datos.setParametro("@idmarca", nuevo.Marca.Id);
                 datos.setParametro("@idcategoria", nuevo.Categoria.Id);
 
                 datos.ejecutarAccion();

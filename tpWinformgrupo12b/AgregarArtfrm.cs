@@ -16,7 +16,7 @@ namespace tpWinformgrupo12b
 {
     public partial class AgregarArtfrm : Form
     {
-        private Articulo articulo = null;
+        private Articulo articulo = null; 
 
         public AgregarArtfrm()
         {
@@ -67,13 +67,14 @@ namespace tpWinformgrupo12b
 
                 //if para modificar o agregar
                 if (articulo.Id != 0)
-                {   
-                    MessageBox.Show("Modificado exitosamente");
+                {
+                    artnegocio.modificar(articulo);
+                    MessageBox.Show("Modificado exitosamente!");
                 }
                 else
                 {
                     artnegocio.agregar(articulo);
-                    MessageBox.Show("Agregado exitosamente");
+                    MessageBox.Show("Agregado exitosamente!");
                 }
 
                 Close();
@@ -102,10 +103,43 @@ namespace tpWinformgrupo12b
 
         private void AgregarArtfrm_Load(object sender, EventArgs e)
         {
-            CategoriaNegocio negocio = new CategoriaNegocio();
-            cbxCategoria.DataSource = negocio.listar();
-            cbxCategoria.ValueMember = "Id";
-            cbxCategoria.DisplayMember = "Descripcion";
+            CategoriaNegocio negocioC = new CategoriaNegocio();
+            MarcaNegocio negocioM = new MarcaNegocio();
+            try
+            {
+                cbxMarca.DataSource = negocioM.listarM();
+                cbxMarca.ValueMember = "Id";
+                cbxMarca.DisplayMember = "Descripcion";
+
+                cbxCategoria.DataSource = negocioC.listar();
+                cbxCategoria.ValueMember = "Id";
+                cbxCategoria.DisplayMember = "Descripcion";
+
+                if(articulo != null)
+                {
+                    txtCodigo.Text = articulo.Codigo.ToString();
+                    txtNombre.Text = articulo.Nombre;
+                    txtDescripcion.Text = articulo.Descripcion;
+                    txtPrecio.Text = articulo.Precio.ToString();
+
+                    if (articulo.Imagenes != null && articulo.Imagenes.Count > 0)
+                    {
+                        // primer link
+                        txturlImagen.Text = articulo.Imagenes[0];
+                        // cargar picturebox
+                        cargarImagen(articulo.Imagenes[0]);
+                    }
+
+                    cbxCategoria.SelectedValue = articulo.Categoria.Id;
+                    cbxMarca.SelectedValue = articulo.Marca.Id;
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
 
         }
     }
