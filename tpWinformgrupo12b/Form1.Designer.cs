@@ -52,22 +52,21 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBasedeDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBasedeDatos.Location = new System.Drawing.Point(15, 33);
-            this.dgvBasedeDatos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvBasedeDatos.Location = new System.Drawing.Point(11, 29);
+            this.dgvBasedeDatos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvBasedeDatos.Name = "dgvBasedeDatos";
             this.dgvBasedeDatos.RowHeadersWidth = 51;
             this.dgvBasedeDatos.RowTemplate.Height = 24;
-            this.dgvBasedeDatos.Size = new System.Drawing.Size(928, 498);
+            this.dgvBasedeDatos.Size = new System.Drawing.Size(701, 477);
             this.dgvBasedeDatos.TabIndex = 0;
             this.dgvBasedeDatos.SelectionChanged += new System.EventHandler(this.dgvBasedeDatos_SelectionChanged);
             // 
             // btnSiguiente
             // 
             this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSiguiente.Location = new System.Drawing.Point(1137, 376);
-            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSiguiente.Location = new System.Drawing.Point(857, 306);
             this.btnSiguiente.Name = "btnSiguiente";
-            this.btnSiguiente.Size = new System.Drawing.Size(129, 28);
+            this.btnSiguiente.Size = new System.Drawing.Size(97, 23);
             this.btnSiguiente.TabIndex = 3;
             this.btnSiguiente.Text = "Imagen siguiente";
             this.btnSiguiente.UseVisualStyleBackColor = true;
@@ -76,10 +75,9 @@
             // btnAnterior
             // 
             this.btnAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAnterior.Location = new System.Drawing.Point(1000, 375);
-            this.btnAnterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnterior.Location = new System.Drawing.Point(754, 305);
             this.btnAnterior.Name = "btnAnterior";
-            this.btnAnterior.Size = new System.Drawing.Size(129, 28);
+            this.btnAnterior.Size = new System.Drawing.Size(97, 23);
             this.btnAnterior.TabIndex = 4;
             this.btnAnterior.Text = "Imagen anterior";
             this.btnAnterior.UseVisualStyleBackColor = true;
@@ -97,7 +95,7 @@
             this.tsbRecargar});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
-            this.tsMain.Size = new System.Drawing.Size(1317, 27);
+            this.tsMain.Size = new System.Drawing.Size(992, 27);
             this.tsMain.TabIndex = 5;
             this.tsMain.Text = "toolStrip1";
             // 
@@ -106,7 +104,7 @@
             this.TsbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("TsbAgregar.Image")));
             this.TsbAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbAgregar.Name = "TsbAgregar";
-            this.TsbAgregar.Size = new System.Drawing.Size(87, 24);
+            this.TsbAgregar.Size = new System.Drawing.Size(73, 24);
             this.TsbAgregar.Text = "Agregar";
             this.TsbAgregar.ToolTipText = "Agregar un articulo";
             this.TsbAgregar.Click += new System.EventHandler(this.TsbAgregar_Click);
@@ -116,7 +114,7 @@
             this.TsbModificar.Image = ((System.Drawing.Image)(resources.GetObject("TsbModificar.Image")));
             this.TsbModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbModificar.Name = "TsbModificar";
-            this.TsbModificar.Size = new System.Drawing.Size(97, 24);
+            this.TsbModificar.Size = new System.Drawing.Size(82, 24);
             this.TsbModificar.Text = "Modificar";
             this.TsbModificar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.TsbModificar.ToolTipText = "Modificar un articulo";
@@ -133,7 +131,7 @@
             this.TsbEliminarArticulo.Image = ((System.Drawing.Image)(resources.GetObject("TsbEliminarArticulo.Image")));
             this.TsbEliminarArticulo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbEliminarArticulo.Name = "TsbEliminarArticulo";
-            this.TsbEliminarArticulo.Size = new System.Drawing.Size(87, 24);
+            this.TsbEliminarArticulo.Size = new System.Drawing.Size(74, 24);
             this.TsbEliminarArticulo.Text = "Eliminar";
             this.TsbEliminarArticulo.ToolTipText = "Eliminar articulo";
             this.TsbEliminarArticulo.Click += new System.EventHandler(this.TsbEliminarArticulo_Click);
@@ -148,7 +146,7 @@
             this.tsbRecargar.Image = ((System.Drawing.Image)(resources.GetObject("tsbRecargar.Image")));
             this.tsbRecargar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRecargar.Name = "tsbRecargar";
-            this.tsbRecargar.Size = new System.Drawing.Size(92, 24);
+            this.tsbRecargar.Size = new System.Drawing.Size(77, 24);
             this.tsbRecargar.Text = "Recargar";
             this.tsbRecargar.ToolTipText = "Recargar la lista de articulos";
             this.tsbRecargar.Click += new System.EventHandler(this.tsbRecargar_Click);
@@ -156,36 +154,41 @@
             // pbxArticulo
             // 
             this.pbxArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbxArticulo.Location = new System.Drawing.Point(949, 33);
-            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pbxArticulo.Location = new System.Drawing.Point(716, 27);
+            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbxArticulo.Name = "pbxArticulo";
-            this.pbxArticulo.Size = new System.Drawing.Size(356, 337);
+            this.pbxArticulo.Size = new System.Drawing.Size(267, 274);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 1;
             this.pbxArticulo.TabStop = false;
             // 
             // btnAgregarImagen
             // 
-            this.btnAgregarImagen.Location = new System.Drawing.Point(1076, 426);
+            this.btnAgregarImagen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarImagen.Location = new System.Drawing.Point(807, 346);
+            this.btnAgregarImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregarImagen.Name = "btnAgregarImagen";
-            this.btnAgregarImagen.Size = new System.Drawing.Size(113, 35);
+            this.btnAgregarImagen.Size = new System.Drawing.Size(85, 28);
             this.btnAgregarImagen.TabIndex = 6;
             this.btnAgregarImagen.Text = "Agregar Imagen";
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             // 
             // pbxImagen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1317, 545);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(992, 544);
             this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.tsMain);
             this.Controls.Add(this.btnAnterior);
             this.Controls.Add(this.btnSiguiente);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvBasedeDatos);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(1333, 582);
+            this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(1004, 480);
             this.Name = "pbxImagen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administrador de articulos";
