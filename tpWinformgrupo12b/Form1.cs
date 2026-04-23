@@ -174,5 +174,89 @@ private void btnAnterior_Click(object sender, EventArgs e)
             MessageBox.Show("Recargando lista...");
             cargar();
         }
+
+        private void btnDetalles_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBusquedaRapida_Click(object sender, EventArgs e)
+        {
+            string filtro = tbxBusquedaRapida.Text.Trim().ToUpper();
+
+            if (string.IsNullOrEmpty(filtro))
+            {
+                cargar();
+                return;
+            }
+
+            // foreach para ver las coincidencias
+            bool hayCoincidencias = false;
+            foreach (Articulo art in articuloList)
+            {
+                if (CoincideConBusqueda(art, filtro) == true)
+                {
+                    hayCoincidencias = true;
+                    break; //en la primera coincidencia pum para afuera
+                }
+            }
+
+            //aqui no hay coincidencias por eso salimos
+            if (hayCoincidencias == false)
+            {
+                MessageBox.Show("No hubo coincidencias", "Búsqueda Rápida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            //Logica compleja para decidir el orden
+            List<Articulo> listaOrdenada = articuloList
+                .OrderByDescending(art => CoincideConBusqueda(art, filtro))
+                .ThenBy(art => art.Nombre)
+                .ToList();
+
+            dgvBasedeDatos.DataSource = null;
+            dgvBasedeDatos.DataSource = listaOrdenada;
+
+            ocultarColumnas();
+            if (dgvBasedeDatos.Columns["Codigo"] != null)
+                dgvBasedeDatos.Columns["Codigo"].HeaderText = "Código";
+            if (dgvBasedeDatos.Columns["Precio"] != null)
+                dgvBasedeDatos.Columns["Precio"].DefaultCellStyle.Format = "C2";
+        }
+        private bool CoincideConBusqueda(Articulo aux, string filtro)
+        {
+            // usamos el poder de los 50ifs juntos para evaluar todos los campos y mandarlos al principio de la lista
+
+            if (aux.Codigo != null && aux.Codigo.ToUpper().Contains(filtro))
+            {
+                return true;
+            }
+
+            if (aux.Nombre != null && aux.Nombre.ToUpper().Contains(filtro))
+            {
+                return true;
+            }
+
+            if (aux.Descripcion != null && aux.Descripcion.ToUpper().Contains(filtro))
+            {
+                return true;
+            }
+
+            if (aux.Marca != null && aux.Marca.Descripcion.ToUpper().Contains(filtro))
+            {
+                return true;
+            }
+
+            if (aux.Categoria != null && aux.Categoria.Descripcion.ToUpper().Contains(filtro))
+            {
+                return true;
+            }
+
+            if (aux.Precio.ToString().Contains(filtro))
+            {
+                return true;
+            }
+            //si llegó hasta aqui significa que no hay coincidencias
+            return false;
+        }
     }
 }
