@@ -142,5 +142,10 @@ namespace tpWinformgrupo12b
             }
 
         }
+
+        private void btnMasImagen_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

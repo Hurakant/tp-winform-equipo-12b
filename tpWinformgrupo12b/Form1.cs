@@ -258,5 +258,12 @@ private void btnAnterior_Click(object sender, EventArgs e)
             //si llegó hasta aqui significa que no hay coincidencias
             return false;
         }
+
+        private void tsbCategorias_Click(object sender, EventArgs e)
+        {
+            CategoriaFrm Cat = new CategoriaFrm();
+            Cat.ShowDialog();
+            cargar();
+        }
     }
 }
