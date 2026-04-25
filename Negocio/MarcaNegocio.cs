@@ -38,5 +38,91 @@ namespace Negocio
             }
         }
 
+
+        public void agregarMarca(string nueva)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("INSERT INTO MARCAS (Descripcion) VALUES (@desc)");
+                datos.setParametro("@desc", nueva);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void modificarMarca(Marca marca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("UPDATE MARCAS SET Descripcion = @desc WHERE Id = @id");
+                datos.setParametro("@desc", marca.Descripcion);
+                datos.setParametro("@id", marca.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void eliminarMarca(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setConsulta("DELETE FROM MARCAS WHERE Id = @id");
+                datos.setParametro("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public bool existeMarca(string descripcion)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // contamos cuántas marcas tienen ese nombre (ignorando mayúsculas/minúsculas)
+                datos.setConsulta("SELECT COUNT(*) FROM MARCAS WHERE Descripcion = @desc");
+                datos.setParametro("@desc", descripcion);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    int cantidad = (int)datos.Lector[0];
+                    return cantidad > 0; // si es mayor a 0, ya existe
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

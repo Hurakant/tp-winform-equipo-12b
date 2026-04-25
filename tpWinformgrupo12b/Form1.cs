@@ -265,5 +265,12 @@ private void btnAnterior_Click(object sender, EventArgs e)
             Cat.ShowDialog();
             cargar();
         }
+
+        private void tsbMarcas_Click(object sender, EventArgs e)
+        {
+            MarcaFrm marca = new MarcaFrm();
+            marca.ShowDialog();
+            cargar();
+        }
     }
 }

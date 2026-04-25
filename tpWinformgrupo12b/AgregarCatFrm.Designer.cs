@@ -73,7 +73,7 @@
             this.btnCancelarCat.TabIndex = 8;
             this.btnCancelarCat.Text = "Cancelar";
             this.btnCancelarCat.UseVisualStyleBackColor = true;
-            this.btnCancelarCat.Click += new System.EventHandler(this.button2_Click);
+            this.btnCancelarCat.Click += new System.EventHandler(this.btnCancelarCat_Click);
             // 
             // AgregarCatFrm
             // 

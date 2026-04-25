@@ -29,28 +29,6 @@ namespace tpWinformgrupo12b
             Text = "Modificar Categoría";
         }
 
-        private List<Categoria> listaCategorias;
-        private CategoriaNegocio negocio = new CategoriaNegocio();
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void cargar()
-        {
-            try
-            {
-                listaCategorias = negocio.listar();
-                //dgvCategoria.DataSource = listaCategorias;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
         private void btnAceptarCat_Click(object sender, EventArgs e)
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
@@ -67,7 +45,7 @@ namespace tpWinformgrupo12b
                 }
                 else
                 {
-                    negocio.agregarCat(categoria.ToString());
+                    negocio.agregarCat(txtNomCat.Text);
                     MessageBox.Show("Agregada exitosamente!");
                 }
                 Close();
@@ -84,6 +62,11 @@ namespace tpWinformgrupo12b
             {
                 txtNomCat.Text = categoria.Descripcion;
             }
+        }
+
+        private void btnCancelarCat_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -40,10 +40,10 @@ namespace tpWinformgrupo12b
             cargar();
         }
 
-        private void btnCancelarCatfrm_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        //private void btnCancelarCatfrm_Click(object sender, EventArgs e)
+        //{
+        //    Close();
+        //}
 
         private void btnModificarCat_Click(object sender, EventArgs e)
         {

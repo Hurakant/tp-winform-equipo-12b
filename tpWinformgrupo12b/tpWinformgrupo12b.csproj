@@ -60,6 +60,12 @@
     <Compile Include="AgregarCatFrm.Designer.cs">
       <DependentUpon>AgregarCatFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarMarcaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarMarcaFrm.Designer.cs">
+      <DependentUpon>AgregarMarcaFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CategoriaFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MarcaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MarcaFrm.Designer.cs">
+      <DependentUpon>MarcaFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AgregarArtfrm.resx">
@@ -80,11 +92,17 @@
     <EmbeddedResource Include="AgregarCatFrm.resx">
       <DependentUpon>AgregarCatFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregarMarcaFrm.resx">
+      <DependentUpon>AgregarMarcaFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CategoriaFrm.resx">
       <DependentUpon>CategoriaFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MarcaFrm.resx">
+      <DependentUpon>MarcaFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

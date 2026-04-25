@@ -38,7 +38,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.TsbEliminarArticulo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbCategorias = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.tsbMarcas = new System.Windows.Forms.ToolStripButton();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.btnDetalles = new System.Windows.Forms.Button();
             this.lbBusquedaRapida = new System.Windows.Forms.Label();
@@ -54,7 +56,6 @@
             this.lbOrdenarMarca = new System.Windows.Forms.Label();
             this.lbordenarpor = new System.Windows.Forms.Label();
             this.btnBusquedaRapida = new System.Windows.Forms.Button();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBasedeDatos)).BeginInit();
             this.tsMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
@@ -81,7 +82,7 @@
             // 
             this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSiguiente.Location = new System.Drawing.Point(1143, 377);
-            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSiguiente.Margin = new System.Windows.Forms.Padding(4);
             this.btnSiguiente.Name = "btnSiguiente";
             this.btnSiguiente.Size = new System.Drawing.Size(129, 28);
             this.btnSiguiente.TabIndex = 3;
@@ -93,7 +94,7 @@
             // 
             this.btnAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAnterior.Location = new System.Drawing.Point(1005, 375);
-            this.btnAnterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAnterior.Margin = new System.Windows.Forms.Padding(4);
             this.btnAnterior.Name = "btnAnterior";
             this.btnAnterior.Size = new System.Drawing.Size(129, 28);
             this.btnAnterior.TabIndex = 4;
@@ -111,10 +112,11 @@
             this.TsbEliminarArticulo,
             this.toolStripSeparator2,
             this.toolStripButton1,
-            this.tsbCategorias});
+            this.toolStripButton2,
+            this.tsbMarcas});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
-            this.tsMain.Size = new System.Drawing.Size(1323, 31);
+            this.tsMain.Size = new System.Drawing.Size(1323, 27);
             this.tsMain.TabIndex = 5;
             this.tsMain.Text = "toolStrip1";
             // 
@@ -123,7 +125,7 @@
             this.TsbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("TsbAgregar.Image")));
             this.TsbAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbAgregar.Name = "TsbAgregar";
-            this.TsbAgregar.Size = new System.Drawing.Size(87, 28);
+            this.TsbAgregar.Size = new System.Drawing.Size(87, 24);
             this.TsbAgregar.Text = "Agregar";
             this.TsbAgregar.ToolTipText = "Agregar un articulo";
             this.TsbAgregar.Click += new System.EventHandler(this.TsbAgregar_Click);
@@ -133,7 +135,7 @@
             this.TsbModificar.Image = ((System.Drawing.Image)(resources.GetObject("TsbModificar.Image")));
             this.TsbModificar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbModificar.Name = "TsbModificar";
-            this.TsbModificar.Size = new System.Drawing.Size(97, 28);
+            this.TsbModificar.Size = new System.Drawing.Size(97, 24);
             this.TsbModificar.Text = "Modificar";
             this.TsbModificar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.TsbModificar.ToolTipText = "Modificar un articulo";
@@ -142,7 +144,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // TsbEliminarArticulo
             // 
@@ -150,7 +152,7 @@
             this.TsbEliminarArticulo.Image = ((System.Drawing.Image)(resources.GetObject("TsbEliminarArticulo.Image")));
             this.TsbEliminarArticulo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TsbEliminarArticulo.Name = "TsbEliminarArticulo";
-            this.TsbEliminarArticulo.Size = new System.Drawing.Size(87, 28);
+            this.TsbEliminarArticulo.Size = new System.Drawing.Size(87, 24);
             this.TsbEliminarArticulo.Text = "Eliminar";
             this.TsbEliminarArticulo.ToolTipText = "Eliminar articulo";
             this.TsbEliminarArticulo.Click += new System.EventHandler(this.TsbEliminarArticulo_Click);
@@ -158,17 +160,35 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
-            // tsbCategorias
+            // toolStripButton1
             // 
-            this.tsbCategorias.Image = global::tpWinformgrupo12b.Properties.Resources.ModificarArticulo1;
-            this.tsbCategorias.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCategorias.Name = "tsbCategorias";
-            this.tsbCategorias.Size = new System.Drawing.Size(104, 28);
-            this.tsbCategorias.Text = "Categorias";
-            this.tsbCategorias.ToolTipText = "Administrar Categorias";
-            this.tsbCategorias.Click += new System.EventHandler(this.tsbCategorias_Click);
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(92, 24);
+            this.toolStripButton1.Text = "Recargar";
+            this.toolStripButton1.ToolTipText = "Recargar la lista de articulos";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.Image = global::tpWinformgrupo12b.Properties.Resources.ModificarArticulo1;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(104, 24);
+            this.toolStripButton2.Text = "Categorias";
+            this.toolStripButton2.ToolTipText = "Administrar Categorias";
+            // 
+            // tsbMarcas
+            // 
+            this.tsbMarcas.Image = global::tpWinformgrupo12b.Properties.Resources.ModificarArticulo1;
+            this.tsbMarcas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbMarcas.Name = "tsbMarcas";
+            this.tsbMarcas.Size = new System.Drawing.Size(80, 24);
+            this.tsbMarcas.Text = "Marcas";
+            this.tsbMarcas.ToolTipText = "Administrar Marcas";
+            this.tsbMarcas.Click += new System.EventHandler(this.tsbMarcas_Click);
             // 
             // pbxArticulo
             // 
@@ -180,6 +200,7 @@
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxArticulo.TabIndex = 1;
             this.pbxArticulo.TabStop = false;
+            this.pbxArticulo.WaitOnLoad = true;
             // 
             // btnDetalles
             // 
@@ -208,7 +229,7 @@
             // 
             this.tbxBusquedaRapida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.tbxBusquedaRapida.Location = new System.Drawing.Point(125, 16);
-            this.tbxBusquedaRapida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxBusquedaRapida.Margin = new System.Windows.Forms.Padding(4);
             this.tbxBusquedaRapida.Name = "tbxBusquedaRapida";
             this.tbxBusquedaRapida.Size = new System.Drawing.Size(132, 22);
             this.tbxBusquedaRapida.TabIndex = 8;
@@ -221,9 +242,9 @@
             this.gbFiltrosDB.Controls.Add(this.tbxBusquedaRapida);
             this.gbFiltrosDB.Controls.Add(this.lbBusquedaRapida);
             this.gbFiltrosDB.Location = new System.Drawing.Point(16, 498);
-            this.gbFiltrosDB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFiltrosDB.Margin = new System.Windows.Forms.Padding(4);
             this.gbFiltrosDB.Name = "gbFiltrosDB";
-            this.gbFiltrosDB.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbFiltrosDB.Padding = new System.Windows.Forms.Padding(4);
             this.gbFiltrosDB.Size = new System.Drawing.Size(895, 156);
             this.gbFiltrosDB.TabIndex = 9;
             this.gbFiltrosDB.TabStop = false;
@@ -240,7 +261,7 @@
             this.panel1.Controls.Add(this.lbOrdenarMarca);
             this.panel1.Controls.Add(this.lbordenarpor);
             this.panel1.Location = new System.Drawing.Point(8, 49);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(879, 100);
             this.panel1.TabIndex = 10;
@@ -249,7 +270,7 @@
             // 
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(580, 48);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(160, 24);
             this.comboBox3.TabIndex = 7;
@@ -268,7 +289,7 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(99, 48);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(160, 24);
             this.comboBox2.TabIndex = 5;
@@ -287,7 +308,7 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(349, 48);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(160, 24);
             this.comboBox1.TabIndex = 3;
@@ -295,7 +316,7 @@
             // btnOrdenar
             // 
             this.btnOrdenar.Location = new System.Drawing.Point(749, 46);
-            this.btnOrdenar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOrdenar.Margin = new System.Windows.Forms.Padding(4);
             this.btnOrdenar.Name = "btnOrdenar";
             this.btnOrdenar.Size = new System.Drawing.Size(100, 28);
             this.btnOrdenar.TabIndex = 2;
@@ -325,22 +346,13 @@
             // btnBusquedaRapida
             // 
             this.btnBusquedaRapida.Location = new System.Drawing.Point(267, 14);
-            this.btnBusquedaRapida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBusquedaRapida.Margin = new System.Windows.Forms.Padding(4);
             this.btnBusquedaRapida.Name = "btnBusquedaRapida";
             this.btnBusquedaRapida.Size = new System.Drawing.Size(100, 28);
             this.btnBusquedaRapida.TabIndex = 9;
             this.btnBusquedaRapida.Text = "Buscar";
             this.btnBusquedaRapida.UseVisualStyleBackColor = true;
             this.btnBusquedaRapida.Click += new System.EventHandler(this.btnBusquedaRapida_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(92, 28);
-            this.toolStripButton1.Text = "Recargar";
-            this.toolStripButton1.ToolTipText = "Recargar la lista de articulos";
             // 
             // pbxImagen
             // 
@@ -388,7 +400,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton TsbEliminarArticulo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton tsbCategorias;
+        private System.Windows.Forms.ToolStripButton tsbMarcas;
         private System.Windows.Forms.Button btnDetalles;
         private System.Windows.Forms.Label lbBusquedaRapida;
         private System.Windows.Forms.TextBox tbxBusquedaRapida;
@@ -404,6 +416,7 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label lbOrdenarPrecio;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 
