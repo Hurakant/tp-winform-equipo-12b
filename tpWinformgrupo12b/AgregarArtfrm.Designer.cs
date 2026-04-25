@@ -45,7 +45,6 @@
             this.lblPrecio = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.pbxAgregarArticulo = new System.Windows.Forms.PictureBox();
-            this.btnMasImagen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxAgregarArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,6 +162,7 @@
             // cbxMarca
             // 
             this.cbxMarca.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbxMarca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMarca.FormattingEnabled = true;
             this.cbxMarca.Location = new System.Drawing.Point(199, 178);
             this.cbxMarca.Name = "cbxMarca";
@@ -172,6 +172,7 @@
             // cbxCategoria
             // 
             this.cbxCategoria.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbxCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCategoria.FormattingEnabled = true;
             this.cbxCategoria.Location = new System.Drawing.Point(199, 215);
             this.cbxCategoria.Name = "cbxCategoria";
@@ -233,24 +234,11 @@
             this.pbxAgregarArticulo.TabStop = false;
             this.pbxAgregarArticulo.WaitOnLoad = true;
             // 
-            // btnMasImagen
-            // 
-            this.btnMasImagen.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMasImagen.Location = new System.Drawing.Point(366, 253);
-            this.btnMasImagen.Name = "btnMasImagen";
-            this.btnMasImagen.Size = new System.Drawing.Size(33, 25);
-            this.btnMasImagen.TabIndex = 22;
-            this.btnMasImagen.Text = "+";
-            this.btnMasImagen.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnMasImagen.UseVisualStyleBackColor = true;
-            this.btnMasImagen.Click += new System.EventHandler(this.btnMasImagen_Click);
-            // 
             // AgregarArtfrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(831, 509);
-            this.Controls.Add(this.btnMasImagen);
             this.Controls.Add(this.pbxAgregarArticulo);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.lblPrecio);
@@ -268,6 +256,8 @@
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblCodigo);
+            this.MaximumSize = new System.Drawing.Size(849, 556);
+            this.MinimumSize = new System.Drawing.Size(849, 556);
             this.Name = "AgregarArtfrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarArtfrm";
@@ -297,6 +287,5 @@
         private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.PictureBox pbxAgregarArticulo;
-        private System.Windows.Forms.Button btnMasImagen;
     }
 }

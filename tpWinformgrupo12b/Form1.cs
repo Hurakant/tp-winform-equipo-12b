@@ -271,5 +271,13 @@ namespace tpWinformgrupo12b
             Cat.ShowDialog();
             cargar();
         }
+
+        private void tsbImagen_Click(object sender, EventArgs e)
+        {
+            Articulo Seleccionado = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
+            ImagenFrm img = new ImagenFrm(Seleccionado.Id);
+            img.ShowDialog();
+            cargar();
+        }
     }
 }

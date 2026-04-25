@@ -60,6 +60,12 @@
     <Compile Include="AgregarCatFrm.Designer.cs">
       <DependentUpon>AgregarCatFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarImagenFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarImagenFrm.Designer.cs">
+      <DependentUpon>AgregarImagenFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AgregarMarcaFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImagenFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImagenFrm.Designer.cs">
+      <DependentUpon>ImagenFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MarcaFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +104,9 @@
     <EmbeddedResource Include="AgregarCatFrm.resx">
       <DependentUpon>AgregarCatFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregarImagenFrm.resx">
+      <DependentUpon>AgregarImagenFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AgregarMarcaFrm.resx">
       <DependentUpon>AgregarMarcaFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImagenFrm.resx">
+      <DependentUpon>ImagenFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MarcaFrm.resx">
       <DependentUpon>MarcaFrm.cs</DependentUpon>

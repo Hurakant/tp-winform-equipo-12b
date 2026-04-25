@@ -84,7 +84,10 @@
             this.Controls.Add(this.btnAceptarCat);
             this.Controls.Add(this.txtNomCat);
             this.Controls.Add(this.lblNomCat);
+            this.MaximumSize = new System.Drawing.Size(560, 280);
+            this.MinimumSize = new System.Drawing.Size(560, 280);
             this.Name = "AgregarCatFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarCatFrm";
             this.Load += new System.EventHandler(this.AgregarCatFrm_Load);
             this.ResumeLayout(false);
