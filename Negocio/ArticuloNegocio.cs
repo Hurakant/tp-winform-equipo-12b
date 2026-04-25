@@ -120,6 +120,10 @@ namespace Negocio
                 datos.setParametro("@id", art.Id);
 
                 datos.ejecutarAccion();
+
+                //Actualizamos la imagen principal
+                if (art.Imagen.Count > 0 && !string.IsNullOrEmpty(art.Imagen[0].ImagenUrl))
+                    imagenNegocio.modificarPrincipal(art.Id, art.Imagen[0].ImagenUrl);
             }
             catch (Exception ex)
             {
@@ -129,9 +133,6 @@ namespace Negocio
             {
                 datos.cerrarConexion();
             }
-
-            //mandamos lo de imágenes a ImagenNegocio
-            imagenNegocio.reemplazarTodas(art.Id, art.Imagen);
         }
         public void eliminar(int id)
         {

@@ -134,5 +134,30 @@ namespace Negocio
             eliminarTodasDeArticulo(idArticulo);
             agregarVarias(idArticulo, imagenes);
         }
+        public void modificarPrincipal(int idArticulo, string urlNueva)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                //Hay que usar esta query muy sotisficada para obtener la primera imagen
+                //Esto funciona?
+                //Odio las imagenes
+                datos.setConsulta(@"UPDATE IMAGENES SET ImagenUrl = @urlNueva 
+                            WHERE Id = (SELECT TOP 1 Id FROM IMAGENES 
+                                        WHERE IdArticulo = @idArt 
+                                        ORDER BY Id ASC)");
+                datos.setParametro("@urlNueva", urlNueva);
+                datos.setParametro("@idArt", idArticulo);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

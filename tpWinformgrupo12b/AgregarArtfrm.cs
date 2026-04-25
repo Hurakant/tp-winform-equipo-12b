@@ -71,14 +71,35 @@ namespace tpWinformgrupo12b
                 articulo.Marca = (Marca)cbxMarca.SelectedItem;
                 articulo.Categoria = (Categoria)cbxCategoria.SelectedItem;
 
-                //if para modificar o agregar
+                //if para modificar o agregar IMAGEN
                 if (articulo.Id != 0)
                 {
+                    //MODIFICAR: si ya tiene imagen principal la actualizamos, sino la agregamos
+                    if (articulo.Imagen.Count > 0)
+                        articulo.Imagen[0].ImagenUrl = txturlImagen.Text;
+                    else
+                    {
+                        Imagen imgPrincipal = new Imagen();
+                        imgPrincipal.IdArticulo = articulo.Id;
+                        imgPrincipal.ImagenUrl = txturlImagen.Text;
+                        articulo.Imagen.Add(imgPrincipal);
+                    }
+
                     artnegocio.modificar(articulo);
                     MessageBox.Show("Modificado exitosamente!");
                 }
                 else
                 {
+                    //ALTA: limpiamos y agregamos solo la imagen principal
+                    articulo.Imagen.Clear();
+                    if (!string.IsNullOrWhiteSpace(txturlImagen.Text))
+                    {
+                        Imagen imgNueva = new Imagen();
+                        imgNueva.IdArticulo = articulo.Id;
+                        imgNueva.ImagenUrl = txturlImagen.Text;
+                        articulo.Imagen.Add(imgNueva);
+                    }
+
                     artnegocio.agregar(articulo);
                     MessageBox.Show("Agregado exitosamente!");
                 }
