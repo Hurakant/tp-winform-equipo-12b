@@ -47,13 +47,13 @@ namespace tpWinformgrupo12b
 
             dgvBasedeDatos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
-        private void cargarImagen(string imagen)
+        private void cargarImagen(string url)
         {
             try
             {
                 //valida el string
-                if (!string.IsNullOrEmpty(imagen))
-                    pbxArticulo.Load(imagen);
+                if (!string.IsNullOrEmpty(url))
+                    pbxArticulo.Load(url);
                 else
                     throw new Exception(); //forzamos el catch para usar el placeholder
             }
@@ -79,10 +79,10 @@ namespace tpWinformgrupo12b
                 dgvBasedeDatos.Columns["Precio"].DefaultCellStyle.Format = "C2";
 
                 // Cargar imagen del primer registro si está
-                if (articuloList[0].Imagenes.Count > 0)
-                    cargarImagen(articuloList[0].Imagenes[0]);
+                if (articuloList.Count > 0 && articuloList[0].Imagen.Count > 0)
+                    cargarImagen(articuloList[0].Imagen[0].ImagenUrl);
                 else
-                    cargarImagen(""); //carga de placeholder si el string viene vacio
+                    cargarImagen("");//manda un string vacio que lo manda al placeholder de la imagen
             }
             catch (Exception ex)
             {
@@ -96,9 +96,9 @@ namespace tpWinformgrupo12b
             {
                 Articulo seleccionado = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
                 imgIndex = 0; // se resetea el indice
-                if (seleccionado.Imagenes != null && seleccionado.Imagenes.Count > 0)
+                if (seleccionado.Imagen != null && seleccionado.Imagen.Count > 0)
                 {
-                    cargarImagen(seleccionado.Imagenes[0]);
+                    cargarImagen(seleccionado.Imagen[0].ImagenUrl);
                 }
                 else
                 {
@@ -118,24 +118,23 @@ namespace tpWinformgrupo12b
         {
             Articulo seleccionado = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
 
-            //if para que no se rompa
-            if (imgIndex < seleccionado.Imagenes.Count - 1)
+            if (seleccionado.Imagen != null && imgIndex < seleccionado.Imagen.Count - 1)
             {
                 imgIndex++;
-                cargarImagen(seleccionado.Imagenes[imgIndex]);
+                cargarImagen(seleccionado.Imagen[imgIndex].ImagenUrl);
             }
         }
 
-private void btnAnterior_Click(object sender, EventArgs e)
-{
-    //para saber si estamos en la primera imagen
-    if (imgIndex > 0)
-    {
-        imgIndex--;
-        Articulo seleccionado = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
-        cargarImagen(seleccionado.Imagenes[imgIndex]);
-    }
-}
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            //para saber si estamos en la primera imagen
+            if (imgIndex > 0)
+            {
+                imgIndex--;
+                Articulo seleccionado = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.Imagen[imgIndex].ImagenUrl);
+            }
+        }
 
         private void TsbAgregar_Click(object sender, EventArgs e)
         {

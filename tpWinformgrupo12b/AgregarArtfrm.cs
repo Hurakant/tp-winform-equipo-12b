@@ -62,11 +62,10 @@ namespace tpWinformgrupo12b
                 articulo.Precio = decimal.Parse(txtPrecio.Text);
 
                 //Imagenes
-                articulo.Imagenes.Clear();
-                if (!string.IsNullOrWhiteSpace(txturlImagen.Text))
-                {
-                    articulo.Imagenes.Add(txturlImagen.Text);
-                }
+                Imagen img = new Imagen();
+                img.IdArticulo = articulo.Id;
+                img.ImagenUrl = txturlImagen.Text;
+                articulo.Imagen.Add(img);
 
                 //comboBox para estas 2 cosas feas
                 articulo.Marca = (Marca)cbxMarca.SelectedItem;
@@ -104,6 +103,7 @@ namespace tpWinformgrupo12b
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error; " + ex.Message);
                 pbxAgregarArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
         }
@@ -132,9 +132,9 @@ namespace tpWinformgrupo12b
                     if (articulo.Imagenes != null && articulo.Imagenes.Count > 0)
                     {
                         // primer link
-                        txturlImagen.Text = articulo.Imagenes[0];
+                        txturlImagen.Text = articulo.Imagen[0].ImagenUrl;
                         // cargar picturebox
-                        cargarImagen(articulo.Imagenes[0]);
+                        cargarImagen(articulo.Imagen[0].ImagenUrl);
                     }
 
                     cbxCategoria.SelectedValue = articulo.Categoria.Id;
