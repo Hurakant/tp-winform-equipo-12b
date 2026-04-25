@@ -8,6 +8,7 @@ using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,8 +33,23 @@ namespace tpWinformgrupo12b
         private void btnAceptarCat_Click(object sender, EventArgs e)
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
+            string nombreNuevo = txtNomCat.Text.Trim();
             try
             {
+                // para saber si la categoria ya existe a la hora de agregar
+                if (categoria == null && negocio.existeCat(nombreNuevo))
+                {
+                    MessageBox.Show("La categoria '" + nombreNuevo + "' ya existe.");
+                    return;
+                }
+
+                // validad q tenga texto
+                if (validar())
+                {
+                    MessageBox.Show("Por favor, complete los campos obligatorios.");
+                    return;
+                }
+
                 if (categoria == null) categoria = new Categoria();
 
                 categoria.Descripcion = txtNomCat.Text;
@@ -67,6 +83,21 @@ namespace tpWinformgrupo12b
         private void btnCancelarCat_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private bool validar()
+        {
+            // resetear colores de fondo por si antes falló y ahora está bien
+            txtNomCat.BackColor = Color.White;
+            
+
+
+            if (string.IsNullOrWhiteSpace(txtNomCat.Text))
+            {
+                txtNomCat.BackColor = Color.Red;
+                return true; // Hay error
+            }
+            return false; // si llega aca no hay ningun txt en blanco/null
         }
     }
 }

@@ -231,6 +231,7 @@
             this.pbxAgregarArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxAgregarArticulo.TabIndex = 21;
             this.pbxAgregarArticulo.TabStop = false;
+            this.pbxAgregarArticulo.WaitOnLoad = true;
             // 
             // btnMasImagen
             // 

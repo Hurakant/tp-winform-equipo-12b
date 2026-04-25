@@ -47,6 +47,12 @@ namespace tpWinformgrupo12b
                     MessageBox.Show("La marca '" + nombreNuevo + "' ya existe.");
                     return;
                 }
+                //validar qu no este en blanco
+                if (validar())
+                {
+                    MessageBox.Show("Por favor, complete los campos obligatorios.");
+                    return;
+                }
 
                 if (marca == null) marca = new Marca();
 
@@ -76,6 +82,21 @@ namespace tpWinformgrupo12b
             {
                 txtNomMarca.Text = marca.Descripcion;
             }
+        }
+
+        private bool validar()
+        {
+            // resetear colores de fondo por si antes falló y ahora está bien
+            txtNomMarca.BackColor = Color.White;
+
+
+
+            if (string.IsNullOrWhiteSpace(txtNomMarca.Text))
+            {
+                txtNomMarca.BackColor = Color.Red;
+                return true; // Hay error
+            }
+            return false; // si llega aca no hay ningun txt en blanco/null
         }
     }
 }

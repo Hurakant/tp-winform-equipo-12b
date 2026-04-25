@@ -39,7 +39,7 @@
             this.TsbEliminarArticulo = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.tsbCategoria = new System.Windows.Forms.ToolStripButton();
             this.tsbMarcas = new System.Windows.Forms.ToolStripButton();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.btnDetalles = new System.Windows.Forms.Button();
@@ -112,7 +112,7 @@
             this.TsbEliminarArticulo,
             this.toolStripSeparator2,
             this.toolStripButton1,
-            this.toolStripButton2,
+            this.tsbCategoria,
             this.tsbMarcas});
             this.tsMain.Location = new System.Drawing.Point(0, 0);
             this.tsMain.Name = "tsMain";
@@ -171,14 +171,15 @@
             this.toolStripButton1.Text = "Recargar";
             this.toolStripButton1.ToolTipText = "Recargar la lista de articulos";
             // 
-            // toolStripButton2
+            // tsbCategoria
             // 
-            this.toolStripButton2.Image = global::tpWinformgrupo12b.Properties.Resources.ModificarArticulo1;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(104, 24);
-            this.toolStripButton2.Text = "Categorias";
-            this.toolStripButton2.ToolTipText = "Administrar Categorias";
+            this.tsbCategoria.Image = global::tpWinformgrupo12b.Properties.Resources.ModificarArticulo1;
+            this.tsbCategoria.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCategoria.Name = "tsbCategoria";
+            this.tsbCategoria.Size = new System.Drawing.Size(104, 24);
+            this.tsbCategoria.Text = "Categorias";
+            this.tsbCategoria.ToolTipText = "Administrar Categorias";
+            this.tsbCategoria.Click += new System.EventHandler(this.tsbCategoria_Click);
             // 
             // tsbMarcas
             // 
@@ -416,7 +417,7 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label lbOrdenarPrecio;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton tsbCategoria;
     }
 }
 

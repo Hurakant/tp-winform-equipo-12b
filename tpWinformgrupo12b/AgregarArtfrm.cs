@@ -42,6 +42,13 @@ namespace tpWinformgrupo12b
 
             try
             {
+                //validamos que no queden en blanco/null los txt
+                if (validar())
+                {
+                    MessageBox.Show("Por favor, complete los campos obligatorios.");
+                    return;
+                }
+
                 //si es un alta nueva, instanciamos
                 if (articulo == null)
                 {
@@ -145,7 +152,41 @@ namespace tpWinformgrupo12b
 
         private void btnMasImagen_Click(object sender, EventArgs e)
         {
+            //agregar mas de 1 enlace?
+        }
 
+        private bool validar()
+        {
+            // resetear colores de fondo por si antes falló y ahora está bien
+            txtCodigo.BackColor = Color.White;
+            txtNombre.BackColor = Color.White;
+            txtDescripcion.BackColor = Color.White;
+            txtPrecio.BackColor = Color.White;
+
+
+            if (string.IsNullOrWhiteSpace(txtCodigo.Text))
+            {
+                txtCodigo.BackColor = Color.Red;
+                return true; // Hay error
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            {
+                txtNombre.BackColor = Color.Red;
+                return true;
+            }
+            if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            {
+                txtDescripcion.BackColor = Color.Red;
+                return true;
+            }
+            if (string.IsNullOrWhiteSpace(txtPrecio.Text))
+            {
+                txtPrecio.BackColor = Color.Red;
+                return true;
+            }
+
+            return false; // si llega aca no hay ningun txt en blanco/null
         }
     }
 }

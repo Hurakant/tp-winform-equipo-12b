@@ -259,17 +259,17 @@ private void btnAnterior_Click(object sender, EventArgs e)
             return false;
         }
 
-        private void tsbCategorias_Click(object sender, EventArgs e)
-        {
-            CategoriaFrm Cat = new CategoriaFrm();
-            Cat.ShowDialog();
-            cargar();
-        }
-
         private void tsbMarcas_Click(object sender, EventArgs e)
         {
             MarcaFrm marca = new MarcaFrm();
             marca.ShowDialog();
+            cargar();
+        }
+
+        private void tsbCategoria_Click(object sender, EventArgs e)
+        {
+            CategoriaFrm Cat = new CategoriaFrm();
+            Cat.ShowDialog();
             cargar();
         }
     }
