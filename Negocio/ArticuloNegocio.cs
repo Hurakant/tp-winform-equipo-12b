@@ -107,8 +107,11 @@ namespace Negocio
         public void modificar(Articulo art)
         {
             AccesoDatos datos = new AccesoDatos();
+            ArticuloNegocio artneg = new ArticuloNegocio();
+
             try
             {
+
                 datos.setConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @descripcion, Precio = @precio, IdMarca = @idmarca, IdCategoria = @idcategoria WHERE Id = @id");
 
                 datos.setParametro("@codigo", art.Codigo);
@@ -145,6 +148,33 @@ namespace Negocio
                 datos.setConsulta("DELETE FROM ARTICULOS WHERE Id = @id");
                 datos.setParametro("@id", id);
                 datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public bool existeCodigoArt(string codigo, int idActual=0)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // buscar si existe el codigo pero que el id sea distinto al actual
+                datos.setConsulta("SELECT COUNT(*) FROM ARTICULOS WHERE Codigo = @codigo AND Id != @id");
+                datos.setParametro("@codigo", codigo);
+                datos.setParametro("@id", idActual);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    return (int)datos.Lector[0] > 0;
+                }
+                return false;
             }
             catch (Exception ex)
             {

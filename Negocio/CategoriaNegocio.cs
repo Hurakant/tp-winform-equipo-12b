@@ -96,14 +96,15 @@ namespace Negocio
             }
         }
 
-        public bool existeCat(string descripcion)
+        public bool existeCat(string descripcion, int IdActual=0)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 // contamos cuántas marcas tienen ese nombre (ignorando mayúsculas/minúsculas)
-                datos.setConsulta("SELECT COUNT(*) FROM CATEGORIAS WHERE Descripcion = @desc");
+                datos.setConsulta("SELECT COUNT(*) FROM CATEGORIAS WHERE Descripcion = @desc AND Id != @id");
                 datos.setParametro("@desc", descripcion);
+                datos.setParametro("@id", IdActual);
                 datos.ejecutarLectura();
 
                 if (datos.Lector.Read())

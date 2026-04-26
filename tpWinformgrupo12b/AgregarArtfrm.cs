@@ -39,13 +39,35 @@ namespace tpWinformgrupo12b
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio artnegocio = new ArticuloNegocio();
+            
 
             try
             {
+
                 //validamos que no queden en blanco/null los txt
                 if (validar())
                 {
                     MessageBox.Show("Por favor, complete los campos obligatorios.");
+                    return;
+                }
+
+                int idActual;
+
+                if (articulo != null)
+                {
+                   idActual = articulo.Id;
+                }
+                else
+                {
+                   idActual = 0;
+                }
+
+                string codigoIngresado = txtCodigo.Text.Trim();
+
+                if (artnegocio.existeCodigoArt(codigoIngresado, idActual))
+                {
+                    txtCodigo.BackColor = Color.Red;
+                    MessageBox.Show("El código '" + codigoIngresado + "' ya existe.");
                     return;
                 }
 

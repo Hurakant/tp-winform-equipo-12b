@@ -34,19 +34,33 @@ namespace tpWinformgrupo12b
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
             string nombreNuevo = txtNomCat.Text.Trim();
+            int idActual;
+
+            if (categoria != null)
+            {
+                idActual = categoria.Id; // modificar
+            }
+            else
+            {
+                idActual = 0;  //agregar
+            }
+
             try
             {
-                // para saber si la categoria ya existe a la hora de agregar
-                if (categoria == null && negocio.existeCat(nombreNuevo))
-                {
-                    MessageBox.Show("La categoria '" + nombreNuevo + "' ya existe.");
-                    return;
-                }
 
                 // validad q tenga texto
                 if (validar())
                 {
                     MessageBox.Show("Por favor, complete los campos obligatorios.");
+                    return;
+                }
+
+                // validamos que no se modifique/agregue una categoria que ya exitse
+
+                if (negocio.existeCat(nombreNuevo, idActual))
+                {
+                    txtNomCat.BackColor = Color.Red;
+                    MessageBox.Show("La categoría '" + nombreNuevo + "' ya existe.");
                     return;
                 }
 
@@ -90,8 +104,6 @@ namespace tpWinformgrupo12b
             // resetear colores de fondo por si antes falló y ahora está bien
             txtNomCat.BackColor = Color.White;
             
-
-
             if (string.IsNullOrWhiteSpace(txtNomCat.Text))
             {
                 txtNomCat.BackColor = Color.Red;
