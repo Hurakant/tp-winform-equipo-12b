@@ -97,14 +97,42 @@ namespace Negocio
             }
         }
 
-        public bool existeMarca(string descripcion)
+        public bool existeMarca(string descripcion, int idActual = 0)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 // contamos cuántas marcas tienen ese nombre (ignorando mayúsculas/minúsculas)
-                datos.setConsulta("SELECT COUNT(*) FROM MARCAS WHERE Descripcion = @desc");
+                datos.setConsulta("SELECT COUNT(*) FROM MARCAS WHERE Descripcion = @desc AND Id != @id");
                 datos.setParametro("@desc", descripcion);
+                datos.setParametro("@id", idActual);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    int cantidad = (int)datos.Lector[0];
+                    return cantidad > 0; // si es mayor a 0, ya existe
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public bool MarcaEnUso(int idMarca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // contamos cuántas marcas tienen ese nombre (ignorando mayúsculas/minúsculas)
+                datos.setConsulta("SELECT COUNT(*) FROM ARTICULOS WHERE IdMarca = @id");
+                datos.setParametro("@id", idMarca);
                 datos.ejecutarLectura();
 
                 if (datos.Lector.Read())

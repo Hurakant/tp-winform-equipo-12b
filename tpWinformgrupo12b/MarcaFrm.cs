@@ -56,20 +56,27 @@ namespace tpWinformgrupo12b
             if (dgvMarca.CurrentRow != null)
             {
                 Marca seleccionado = (Marca)dgvMarca.CurrentRow.DataBoundItem;
-                // preguntar si se elimina o no
-                DialogResult respuesta = MessageBox.Show("Eliminar " + seleccionado.Descripcion + "?", "Eliminando", MessageBoxButtons.YesNo);
-
-                if (respuesta == DialogResult.Yes)
+                try
                 {
-                    try
+                    // validacion para que no se eliminen las categorias en uso
+                    if (negocio.MarcaEnUso(seleccionado.Id))
+                    {
+                        MessageBox.Show("No se puede eliminar la marca '" + seleccionado.Descripcion + "' porque hay artículos que la están usando.");
+                        return;
+                    }
+
+                    DialogResult respuesta = MessageBox.Show("Eliminar '" + seleccionado.Descripcion + "'?", "Eliminando", MessageBoxButtons.YesNo);
+
+                    if (respuesta == DialogResult.Yes)
                     {
                         negocio.eliminarMarca(seleccionado.Id);
                         cargar();
                     }
-                    catch (Exception ex)
-                    {
-                        throw ex; // error de que si esta en uso no se borre
-                    }
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
                 }
             }
         }

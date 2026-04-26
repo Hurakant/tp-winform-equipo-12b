@@ -124,5 +124,32 @@ namespace Negocio
             }
         }
 
+        public bool CatEnUso(int idCat)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                // contamos cuántas marcas tienen ese nombre (ignorando mayúsculas/minúsculas)
+                datos.setConsulta("SELECT COUNT(*) FROM ARTICULOS WHERE IdCategoria = @id");
+                datos.setParametro("@id", idCat);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    int cantidad = (int)datos.Lector[0];
+                    return cantidad > 0; // si es mayor a 0, ya existe
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
     }
 }

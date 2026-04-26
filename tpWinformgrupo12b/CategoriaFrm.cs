@@ -56,24 +56,30 @@ namespace tpWinformgrupo12b
             if (dgvCategoria.CurrentRow != null)
             {
                 Categoria seleccionado = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
-                // preguntar si se elimina o no
-                DialogResult respuesta = MessageBox.Show("Eliminar " + seleccionado.Descripcion + "?", "Eliminando", MessageBoxButtons.YesNo);
 
-                if (respuesta == DialogResult.Yes)
+                try
                 {
-                    try
+                    // validacion para que no se eliminen las categorias en uso
+                    if (negocio.CatEnUso(seleccionado.Id))
                     {
-                        negocio.eliminarCat(seleccionado.Id); 
-                        cargar(); 
-                    }
-                    catch (Exception ex)
+                        MessageBox.Show("No se puede eliminar la categoría '" + seleccionado.Descripcion + "' porque hay artículos que la están usando.");
+                        return; 
+                    }               
+                    
+                    DialogResult respuesta = MessageBox.Show("Eliminar " + seleccionado.Descripcion + "?", "Eliminando", MessageBoxButtons.YesNo);
+
+                    if (respuesta == DialogResult.Yes)
                     {
-                        throw ex;
+                        negocio.eliminarCat(seleccionado.Id);
+                        cargar();
                     }
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
                 }
             }
         }
-
-
     }
 }
