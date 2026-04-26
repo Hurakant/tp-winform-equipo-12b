@@ -40,17 +40,22 @@ namespace tpWinformgrupo12b
         {
             ArticuloNegocio artnegocio = new ArticuloNegocio();
             
-
             try
             {
-
                 //validamos que no queden en blanco/null los txt
                 if (validar())
                 {
                     MessageBox.Show("Por favor, complete los campos obligatorios.");
                     return;
                 }
+                 //validación del precio
+                if (validarNum())
+                {
+                    MessageBox.Show("Por favor, ingrese un numero valido.");
+                    return;
+                }
 
+                // validación del código
                 int idActual;
 
                 if (articulo != null)
@@ -59,7 +64,7 @@ namespace tpWinformgrupo12b
                 }
                 else
                 {
-                   idActual = 0;
+                   idActual = 0; 
                 }
 
                 string codigoIngresado = txtCodigo.Text.Trim();
@@ -193,11 +198,6 @@ namespace tpWinformgrupo12b
 
         }
 
-        private void btnMasImagen_Click(object sender, EventArgs e)
-        {
-            //agregar mas de 1 enlace?
-        }
-
         private bool validar()
         {
             // resetear colores de fondo por si antes falló y ahora está bien
@@ -223,13 +223,45 @@ namespace tpWinformgrupo12b
                 txtDescripcion.BackColor = Color.Red;
                 return true;
             }
-            if (string.IsNullOrWhiteSpace(txtPrecio.Text))
+            if (string.IsNullOrWhiteSpace(txturlImagen.Text))
             {
+                txturlImagen.BackColor = Color.Red;
+                return true;
+            }
+
+            return false; // Si llegó hasta acá, todo está bien
+        }
+
+        private bool validarNum ()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txtPrecio.Text))
+                {
+                    txtPrecio.BackColor = Color.Red;
+                    return true; // está en blanco
+                }
+                else
+                {
+                    decimal precio = decimal.Parse(txtPrecio.Text);
+                    if (precio < 0)
+                    {
+                        txtPrecio.BackColor = Color.Red;
+                        return true; // número negativo
+                    }
+                }
+                txtPrecio.BackColor = Color.White;
+                return false; 
+            }
+            catch (Exception)
+            {
+                // si llega acá significa que hay letras
                 txtPrecio.BackColor = Color.Red;
                 return true;
             }
 
-            return false; // si llega aca no hay ningun txt en blanco/null
         }
-    }
-}
+                
+        }
+  }
+

@@ -110,7 +110,7 @@ namespace Negocio
                 if (datos.Lector.Read())
                 {
                     int cantidad = (int)datos.Lector[0];
-                    return cantidad > 0; // si es mayor a 0, ya existe
+                    return cantidad > 0; // si es mayor a 0, ya existe, evitando nombres duplicados
                 }
                 return false;
             }
