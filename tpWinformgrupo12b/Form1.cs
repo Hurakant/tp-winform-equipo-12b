@@ -88,6 +88,28 @@ namespace tpWinformgrupo12b
             {
                 MessageBox.Show("Error al cargar los datos: " + ex.Message);
             }
+            //Cargar ComboBox de Marca
+            MarcaNegocio marcaNegocio = new MarcaNegocio();
+            List<Marca> marcas = marcaNegocio.listarM();
+            marcas.Insert(0, new Marca { Id = 0, Descripcion = "Todas" });
+            cboMarca.DataSource = marcas;
+            cboMarca.DisplayMember = "Descripcion";
+            cboMarca.ValueMember = "Id";
+
+            //Cargar ComboBox de Categoría
+            CategoriaNegocio catNegocio = new CategoriaNegocio();
+            List<Categoria> categorias = catNegocio.listar();
+            categorias.Insert(0, new Categoria { Id = 0, Descripcion = "Todas" });
+            cboCategoria.DataSource = categorias;
+            cboCategoria.DisplayMember = "Descripcion";
+            cboCategoria.ValueMember = "Id";
+
+            //Cargar ComboBox de Precio
+            cboPrecio.Items.Clear();
+            cboPrecio.Items.Add("Sin filtro");
+            cboPrecio.Items.Add("Menor a Mayor");
+            cboPrecio.Items.Add("Mayor a Menor");
+            cboPrecio.SelectedIndex = 0;
         }
 
         private void dgvBasedeDatos_SelectionChanged(object sender, EventArgs e)
@@ -277,6 +299,58 @@ namespace tpWinformgrupo12b
             MarcaFrm marca = new MarcaFrm();
             marca.ShowDialog();
             cargar();
+        }
+
+        private void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Articulo> listaFiltrada = new List<Articulo>(articuloList);
+
+                //Filtro de marca
+                Marca marcaSeleccionada = (Marca)cboMarca.SelectedItem;
+                if (marcaSeleccionada != null && marcaSeleccionada.Id != 0)
+                {
+                    listaFiltrada = listaFiltrada
+                        .Where(a => a.Marca != null && a.Marca.Id == marcaSeleccionada.Id)
+                        .ToList();
+                }
+
+                //Filtro de categoria
+                Categoria catSeleccionada = (Categoria)cboCategoria.SelectedItem;
+                if (catSeleccionada != null && catSeleccionada.Id != 0)
+                {
+                    listaFiltrada = listaFiltrada
+                        .Where(a => a.Categoria != null && a.Categoria.Id == catSeleccionada.Id)
+                        .ToList();
+                }
+
+                //Filtro de precio
+                if (cboPrecio.SelectedItem != null)
+                {
+                    if (cboPrecio.SelectedItem.ToString() == "Menor a Mayor")
+                        listaFiltrada = listaFiltrada.OrderBy(a => a.Precio).ToList();
+                    else if (cboPrecio.SelectedItem.ToString() == "Mayor a Menor")
+                        listaFiltrada = listaFiltrada.OrderByDescending(a => a.Precio).ToList();
+                }
+
+                if (listaFiltrada.Count == 0)
+                {
+                    MessageBox.Show("No hay artículos con los filtros seleccionados.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                dgvBasedeDatos.DataSource = null;
+                dgvBasedeDatos.DataSource = listaFiltrada;
+
+                ocultarColumnas();
+                dgvBasedeDatos.Columns["Codigo"].HeaderText = "Código";
+                dgvBasedeDatos.Columns["Precio"].DefaultCellStyle.Format = "C2";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al filtrar: " + ex.Message);
+            }
         }
     }
 }
