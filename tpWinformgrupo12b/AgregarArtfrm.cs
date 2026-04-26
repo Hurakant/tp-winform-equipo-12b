@@ -151,7 +151,8 @@ namespace tpWinformgrupo12b
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error; " + ex.Message);
+                //MessageBox.Show("Error; " + ex.Message);
+                MessageBox.Show("Ingrese un URL válido");
                 pbxAgregarArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
             }
         }
@@ -205,6 +206,7 @@ namespace tpWinformgrupo12b
             txtNombre.BackColor = Color.White;
             txtDescripcion.BackColor = Color.White;
             txtPrecio.BackColor = Color.White;
+            txturlImagen.BackColor = Color.White;
 
 
             if (string.IsNullOrWhiteSpace(txtCodigo.Text))
