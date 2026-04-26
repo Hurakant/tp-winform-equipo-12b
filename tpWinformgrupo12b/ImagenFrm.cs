@@ -74,5 +74,81 @@ namespace tpWinformgrupo12b
         {
             Close();
         }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (dgvImagenes.CurrentRow == null) return;
+
+            Imagen seleccionada = (Imagen)dgvImagenes.CurrentRow.DataBoundItem;
+
+            // Abrimos un form simple con un textbox para la nueva URL
+            Form frmModificar = new Form();
+            frmModificar.Text = "Modificar imagen";
+            frmModificar.Size = new Size(400, 150);
+            frmModificar.FormBorderStyle = FormBorderStyle.FixedDialog;
+            frmModificar.StartPosition = FormStartPosition.CenterParent;
+
+            TextBox txtNuevaUrl = new TextBox();
+            txtNuevaUrl.Text = seleccionada.ImagenUrl;
+            txtNuevaUrl.Width = 360;
+            txtNuevaUrl.Location = new Point(10, 20);
+            frmModificar.Controls.Add(txtNuevaUrl);
+
+            Button btnAceptar = new Button();
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.Location = new Point(200, 60);
+            btnAceptar.DialogResult = DialogResult.OK;
+            frmModificar.Controls.Add(btnAceptar);
+
+            Button btnCancelar = new Button();
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.Location = new Point(290, 60);
+            btnCancelar.DialogResult = DialogResult.Cancel;
+            frmModificar.Controls.Add(btnCancelar);
+
+            frmModificar.AcceptButton = btnAceptar;
+            frmModificar.CancelButton = btnCancelar;
+
+            if (frmModificar.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    ImagenNegocio imgNegocio = new ImagenNegocio();
+                    imgNegocio.modificar(seleccionada.IdArticulo, seleccionada.ImagenUrl, txtNuevaUrl.Text);
+                    cargar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al modificar: " + ex.Message);
+                }
+            }
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (dgvImagenes.CurrentRow == null) return;
+
+            Imagen seleccionada = (Imagen)dgvImagenes.CurrentRow.DataBoundItem;
+
+            DialogResult confirmacion = MessageBox.Show(
+                "¿Estás seguro que querés eliminar esta imagen?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirmacion == DialogResult.Yes)
+            {
+                try
+                {
+                    ImagenNegocio imgNegocio = new ImagenNegocio();
+                    imgNegocio.eliminar(seleccionada.IdArticulo, seleccionada.ImagenUrl);
+                    cargar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al eliminar: " + ex.Message);
+                }
+            }
+        }
     }
 }

@@ -257,14 +257,6 @@ namespace tpWinformgrupo12b
             //si llegó hasta aqui significa que no hay coincidencias
             return false;
         }
-
-        private void tsbMarcas_Click(object sender, EventArgs e)
-        {
-            MarcaFrm marca = new MarcaFrm();
-            marca.ShowDialog();
-            cargar();
-        }
-
         private void tsbCategoria_Click(object sender, EventArgs e)
         {
             CategoriaFrm Cat = new CategoriaFrm();
@@ -277,6 +269,13 @@ namespace tpWinformgrupo12b
             Articulo Seleccionado = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
             ImagenFrm img = new ImagenFrm(Seleccionado.Id);
             img.ShowDialog();
+            cargar();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            MarcaFrm marca = new MarcaFrm();
+            marca.ShowDialog();
             cargar();
         }
     }

@@ -41,19 +41,21 @@
             // dgvImagenes
             // 
             this.dgvImagenes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvImagenes.Location = new System.Drawing.Point(24, 21);
+            this.dgvImagenes.Location = new System.Drawing.Point(18, 17);
+            this.dgvImagenes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvImagenes.Name = "dgvImagenes";
             this.dgvImagenes.RowHeadersWidth = 51;
             this.dgvImagenes.RowTemplate.Height = 24;
-            this.dgvImagenes.Size = new System.Drawing.Size(448, 296);
+            this.dgvImagenes.Size = new System.Drawing.Size(336, 240);
             this.dgvImagenes.TabIndex = 1;
             this.dgvImagenes.SelectionChanged += new System.EventHandler(this.dgvImagenes_SelectionChanged);
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(24, 340);
+            this.btnAgregar.Location = new System.Drawing.Point(18, 276);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 36);
+            this.btnAgregar.Size = new System.Drawing.Size(56, 29);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -61,27 +63,32 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(120, 340);
+            this.btnModificar.Location = new System.Drawing.Point(90, 276);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 36);
+            this.btnModificar.Size = new System.Drawing.Size(56, 29);
             this.btnModificar.TabIndex = 3;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(214, 340);
+            this.btnEliminar.Location = new System.Drawing.Point(160, 276);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 36);
+            this.btnEliminar.Size = new System.Drawing.Size(56, 29);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // pbxImagen
             // 
-            this.pbxImagen.Location = new System.Drawing.Point(489, 12);
+            this.pbxImagen.Location = new System.Drawing.Point(367, 10);
+            this.pbxImagen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbxImagen.Name = "pbxImagen";
-            this.pbxImagen.Size = new System.Drawing.Size(428, 426);
+            this.pbxImagen.Size = new System.Drawing.Size(321, 346);
             this.pbxImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxImagen.TabIndex = 0;
             this.pbxImagen.TabStop = false;
@@ -89,9 +96,10 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(375, 405);
+            this.btnCancelar.Location = new System.Drawing.Point(281, 329);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(82, 33);
+            this.btnCancelar.Size = new System.Drawing.Size(62, 27);
             this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -99,17 +107,18 @@
             // 
             // ImagenFrm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(939, 450);
+            this.ClientSize = new System.Drawing.Size(706, 372);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.dgvImagenes);
             this.Controls.Add(this.pbxImagen);
-            this.MaximumSize = new System.Drawing.Size(957, 497);
-            this.MinimumSize = new System.Drawing.Size(957, 497);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(722, 411);
+            this.MinimumSize = new System.Drawing.Size(722, 411);
             this.Name = "ImagenFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImagenFrm";
