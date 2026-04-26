@@ -66,13 +66,19 @@
             // 
             // dgvBasedeDatos
             // 
+            this.dgvBasedeDatos.AllowUserToAddRows = false;
+            this.dgvBasedeDatos.AllowUserToDeleteRows = false;
+            this.dgvBasedeDatos.AllowUserToOrderColumns = true;
+            this.dgvBasedeDatos.AllowUserToResizeColumns = false;
+            this.dgvBasedeDatos.AllowUserToResizeRows = false;
             this.dgvBasedeDatos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvBasedeDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBasedeDatos.Location = new System.Drawing.Point(11, 29);
-            this.dgvBasedeDatos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvBasedeDatos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBasedeDatos.Name = "dgvBasedeDatos";
+            this.dgvBasedeDatos.ReadOnly = true;
             this.dgvBasedeDatos.RowHeadersWidth = 51;
             this.dgvBasedeDatos.RowTemplate.Height = 24;
             this.dgvBasedeDatos.Size = new System.Drawing.Size(670, 363);
@@ -206,7 +212,7 @@
             // 
             this.pbxArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbxArticulo.Location = new System.Drawing.Point(699, 29);
-            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbxArticulo.Margin = new System.Windows.Forms.Padding(2);
             this.pbxArticulo.Name = "pbxArticulo";
             this.pbxArticulo.Size = new System.Drawing.Size(267, 274);
             this.pbxArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -218,7 +224,7 @@
             // 
             this.btnDetalles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDetalles.Location = new System.Drawing.Point(786, 346);
-            this.btnDetalles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDetalles.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetalles.Name = "btnDetalles";
             this.btnDetalles.Size = new System.Drawing.Size(97, 23);
             this.btnDetalles.TabIndex = 6;
@@ -368,7 +374,7 @@
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.dgvBasedeDatos);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(1008, 580);
             this.MinimumSize = new System.Drawing.Size(1008, 580);
             this.Name = "pbxImagen";

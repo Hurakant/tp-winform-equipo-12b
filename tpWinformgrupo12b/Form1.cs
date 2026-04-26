@@ -198,7 +198,10 @@ namespace tpWinformgrupo12b
 
         private void btnDetalles_Click(object sender, EventArgs e)
         {
-
+            Articulo Seleccionado = (Articulo)dgvBasedeDatos.CurrentRow.DataBoundItem;
+            Detallesfrm detallesver = new Detallesfrm(Seleccionado);
+            detallesver.ShowDialog();
+            cargar();
         }
 
         private void btnBusquedaRapida_Click(object sender, EventArgs e)
